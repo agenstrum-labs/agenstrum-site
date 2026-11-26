@@ -87,11 +87,7 @@
             </div>
           </div>
           <div class="hero-art" aria-hidden="true">
-            <canvas class="neural"></canvas>
-            <div class="orbit"><span class="orbit-dot"></span></div>
-            <div class="orbital">
-              <img src="assets/emblem.png" alt="" />
-            </div>
+            <canvas class="agents" data-emblem="assets/emblem.png"></canvas>
           </div>
         </div>
         <div class="container">
@@ -112,6 +108,18 @@
             <h2 class="section-title" data-i18n="sol.title">Modular agentic apps</h2>
             <p class="section-subtitle" data-i18n="sol.sub">Agentic AI apps that work together or stand alone.</p>
           </header>
+          <figure class="feature-video">
+            <div class="video-frame">
+              <video controls playsinline preload="metadata" poster="assets/video/agenstrum-autonomous-by-design-poster.jpg" aria-labelledby="video-title">
+                <source src="assets/video/agenstrum-autonomous-by-design.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <figcaption>
+              <span class="video-meta"><span class="pulse" aria-hidden="true"></span><span data-i18n="vid.meta">Watch · 7 min</span></span>
+              <h3 id="video-title">Autonomous by Design</h3>
+              <p data-i18n="vid.d">How agentic AI and operations research rebuild the supply chain, and how our agents plan, negotiate, and execute across every echelon.</p>
+            </figcaption>
+          </figure>
           <div class="grid cards">
             <article class="card">
               <span class="card-idx">A1</span>
@@ -400,7 +408,7 @@
     </footer>
 
     <script src="js/i18n.js"></script>
-    <script src="js/network.js"></script>
+    <script src="js/agents.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
