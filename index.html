@@ -32,23 +32,25 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Saira:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-  <body>
+  <body class="home">
     <a class="skip-link" href="#main" data-i18n="ui.skip">Skip to content</a>
 
     <header class="site-header">
       <div class="container nav">
-        <a class="brand" href="#main" aria-label="AGENSTRUM Labs">
+        <a class="brand" href="./" aria-label="AGENSTRUM Labs">
           <img src="assets/emblem.png" alt="" class="logo" width="40" height="40" />
           <span class="wordmark">AGENSTRUM<span class="thin">LABS</span></span>
         </a>
         <div class="nav-actions">
           <nav class="menu" id="menu" aria-label="Main navigation">
-            <a href="#solutions" data-i18n="nav.solutions">Solutions</a>
-            <a href="#approach" data-i18n="nav.approach">Approach</a>
-            <a href="#hve" data-i18n="nav.hve">HVE</a>
-            <a href="#stack" data-i18n="nav.tech">Tech</a>
-            <a href="#about" data-i18n="nav.about">About</a>
-            <a href="#contact" class="btn btn-outline" data-i18n="nav.contact">Contact</a>
+            <a href="./" aria-current="page" data-i18n="nav.home">Home</a>
+            <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+            <a href="approach.html" data-i18n="nav.approach">Approach</a>
+            <a href="hve.html" data-i18n="nav.hve">HVE</a>
+            <a href="tech.html" data-i18n="nav.tech">Tech</a>
+            <a href="resources.html" data-i18n="nav.resources">Resources</a>
+            <a href="about.html" data-i18n="nav.about">About</a>
+            <a href="contact.html" class="btn btn-outline" data-i18n="nav.contact">Contact</a>
           </nav>
           <div class="lang">
             <button class="icon-btn lang-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="lang-menu" data-i18n-aria="ui.lang" aria-label="Change language">
@@ -74,22 +76,82 @@
     </header>
 
     <main id="main">
-      <!-- Hero -->
-      <section class="hero">
-        <div class="container hero-inner">
-          <div class="hero-copy">
+      <!-- Hero: live supply-chain digital twin -->
+      <section class="twin-hero" aria-labelledby="hero-title">
+        <canvas class="twin" data-emblem="assets/emblem.png" aria-hidden="true"></canvas>
+        <div class="container twin-copy">
+          <div>
             <p class="status"><span class="pulse" aria-hidden="true"></span><span data-i18n="hero.status">Agents planning · negotiating · executing</span></p>
-            <h1 data-i18n="hero.title">Agentic AI for resilient, efficient supply chains.</h1>
+            <h1 id="hero-title" data-i18n="hero.title">Agentic AI for resilient, efficient supply chains.</h1>
+          </div>
+          <div class="twin-aside">
             <p class="lead" data-i18n="hero.lead">We design autonomous, goal-driven AI agents that plan, negotiate, and execute across your supply network — cutting costs, boosting service, and turning data into decisions.</p>
             <div class="cta">
-              <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Request a demo</a>
-              <a href="#solutions" class="btn btn-ghost" data-i18n="hero.cta2">Explore solutions</a>
+              <a href="contact.html" class="btn btn-primary" data-i18n="hero.cta1">Request a demo</a>
+              <a href="solutions.html" class="btn btn-ghost" data-i18n="hero.cta2">Explore solutions</a>
             </div>
           </div>
-          <div class="hero-art" aria-hidden="true">
-            <canvas class="agents" data-emblem="assets/emblem.png"></canvas>
+        </div>
+        <div class="twin-stage" aria-hidden="true"></div>
+        <div class="container">
+          <div class="twin-panel" role="region" aria-label="Digital twin control panel" data-i18n-aria="tw.panel">
+            <div class="tp-block tp-feed">
+              <h2 class="tp-head"><span class="live-dot" aria-hidden="true"></span><span data-i18n="tw.feed">Agent activity</span><span class="tp-sub"><span class="n-agents">4</span> <span data-i18n="tw.agents">agents</span> · <span class="n-subs">20</span> <span data-i18n="tw.subs">sub-agents</span></span></h2>
+              <ol class="feed" aria-live="off"></ol>
+            </div>
+            <div class="tp-block tp-kpis">
+              <h2 class="tp-head"><span data-i18n="tw.kpis">Network KPIs</span><span class="tp-sub" data-i18n="tw.sim">Simulated data</span></h2>
+              <div class="kpis">
+                <div class="kpi" data-kpi="fill">
+                  <span class="k-label" data-i18n="kpi.fill">Fill rate</span>
+                  <span class="k-row"><span class="k-val">–</span><span class="k-delta"></span></span>
+                  <svg class="k-spark" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><path d=""/></svg>
+                </div>
+                <div class="kpi" data-kpi="otif">
+                  <span class="k-label" data-i18n="kpi.otif">OTIF</span>
+                  <span class="k-row"><span class="k-val">–</span><span class="k-delta"></span></span>
+                  <svg class="k-spark" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><path d=""/></svg>
+                </div>
+                <div class="kpi" data-kpi="inv">
+                  <span class="k-label" data-i18n="kpi.inv">Inventory (days)</span>
+                  <span class="k-row"><span class="k-val">–</span><span class="k-delta"></span></span>
+                  <svg class="k-spark" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><path d=""/></svg>
+                </div>
+                <div class="kpi" data-kpi="cts">
+                  <span class="k-label" data-i18n="kpi.cts">Cost-to-serve / unit</span>
+                  <span class="k-row"><span class="k-val">–</span><span class="k-delta"></span></span>
+                  <svg class="k-spark" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><path d=""/></svg>
+                </div>
+                <div class="kpi" data-kpi="co2">
+                  <span class="k-label" data-i18n="kpi.co2">CO₂e kg / unit</span>
+                  <span class="k-row"><span class="k-val">–</span><span class="k-delta"></span></span>
+                  <svg class="k-spark" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><path d=""/></svg>
+                </div>
+                <div class="kpi" data-kpi="dec">
+                  <span class="k-label" data-i18n="kpi.dec">Agent decisions today</span>
+                  <span class="k-row"><span class="k-val">–</span><span class="k-delta"></span></span>
+                  <svg class="k-spark" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><path d=""/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="tp-block tp-legend">
+              <h2 class="tp-head"><span data-i18n="tw.net">Network</span></h2>
+              <ul class="legend">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V11l5-3v3l5-3v3l5-3v12z"/></svg><span data-i18n="tw.sup">Suppliers</span><b>24</b></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l7.4 4.25v8.5L12 20.5l-7.4-4.25v-8.5z"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/></svg><span data-i18n="tw.hub">Hubs</span><b>5</b></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20V10L12 4.5 20.5 10v10z"/><path d="M9 20v-5.5h6V20"/></svg><span data-i18n="tw.dc">DCs</span><b>12</b></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="9" width="15" height="11" rx="1.5"/><path d="M3.5 9h17l-1.5-4H5z"/></svg><span data-i18n="tw.pos">Points of sale</span><b>56</b></li>
+              </ul>
+              <ul class="legend flows">
+                <li><i class="sw sw-mat" aria-hidden="true"></i><span data-i18n="tw.mat">Material flow</span></li>
+                <li><i class="sw sw-info" aria-hidden="true"></i><span data-i18n="tw.info">Information flow</span></li>
+              </ul>
+            </div>
           </div>
         </div>
+      </section>
+
+      <section class="section metrics-band">
         <div class="container">
           <ul class="metrics">
             <li><strong>10–30%</strong><span data-i18n="m1">Inventory reduction</span></li>
@@ -97,289 +159,6 @@
             <li><strong data-i18n="m3.v">Minutes</strong><span data-i18n="m3">to actionable insights</span></li>
             <li><strong data-i18n="m4.v">4 weeks</strong><span data-i18n="m4">to a working pilot</span></li>
           </ul>
-        </div>
-      </section>
-
-      <!-- Solutions -->
-      <section id="solutions" class="section alt">
-        <div class="container">
-          <header class="section-head">
-            <p class="eyebrow"><span>01</span><span data-i18n="sol.eyebrow">Solutions</span></p>
-            <h2 class="section-title" data-i18n="sol.title">Modular agentic apps</h2>
-            <p class="section-subtitle" data-i18n="sol.sub">Agentic AI apps that work together or stand alone.</p>
-          </header>
-          <figure class="feature-video">
-            <div class="video-frame">
-              <video controls playsinline preload="metadata" poster="assets/video/agenstrum-autonomous-by-design-poster.jpg" aria-labelledby="video-title">
-                <source src="assets/video/agenstrum-autonomous-by-design.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <figcaption>
-              <span class="video-meta"><span class="pulse" aria-hidden="true"></span><span data-i18n="vid.meta">Watch · 7 min</span></span>
-              <h3 id="video-title">Autonomous by Design</h3>
-              <p data-i18n="vid.d">How agentic AI and operations research rebuild the supply chain, and how our agents plan, negotiate, and execute across every echelon.</p>
-            </figcaption>
-          </figure>
-          <div class="grid cards">
-            <article class="card">
-              <span class="card-idx">A1</span>
-              <h3 data-i18n="s1.t">Smart Purchasing</h3>
-              <p data-i18n="s1.d">Autonomous buying agents place, split, and track POs using price/lead-time trade-offs, MOQ, and vendor scorecards.</p>
-              <ul>
-                <li data-i18n="s1.l1">Dynamic reorder &amp; PO splitting</li>
-                <li data-i18n="s1.l2">Vendor negotiation copilots</li>
-                <li data-i18n="s1.l3">Budget &amp; cash-flow guardrails</li>
-              </ul>
-            </article>
-            <article class="card">
-              <span class="card-idx">A2</span>
-              <h3 data-i18n="s2.t">Multi-Echelon Planning</h3>
-              <p data-i18n="s2.d">Agents coordinate DCs, hubs, and stores to meet service targets at minimum total cost with uncertainty-aware forecasts.</p>
-              <ul>
-                <li data-i18n="s2.l1">MEIO with ABCD-XYZ policies</li>
-                <li data-i18n="s2.l2">Service tiers by item class</li>
-                <li data-i18n="s2.l3">What-if scenarios &amp; simulations</li>
-              </ul>
-            </article>
-            <article class="card">
-              <span class="card-idx">A3</span>
-              <h3 data-i18n="s3.t">Inventory Allocation</h3>
-              <p data-i18n="s3.d">Real-time allocation agents rebalance stock using demand sensing, substitution rules, and priority constraints.</p>
-              <ul>
-                <li data-i18n="s3.l1">Backorder mitigation</li>
-                <li data-i18n="s3.l2">Cross-dock &amp; transship logic</li>
-                <li data-i18n="s3.l3">Shelf-life &amp; expiry aware</li>
-              </ul>
-            </article>
-            <article class="card">
-              <span class="card-idx">A4</span>
-              <h3 data-i18n="s4.t">Risk &amp; Resilience</h3>
-              <p data-i18n="s4.d">Continuously scans disruptions (suppliers, logistics, weather) and triggers contingency playbooks.</p>
-              <ul>
-                <li data-i18n="s4.l1">Supplier risk scores</li>
-                <li data-i18n="s4.l2">Route &amp; capacity re-plans</li>
-                <li data-i18n="s4.l3">ESG &amp; compliance checks</li>
-              </ul>
-            </article>
-            <article class="card">
-              <span class="card-idx">A5</span>
-              <h3 data-i18n="s5.t">Network Optimization</h3>
-              <p data-i18n="s5.d">Design and continuously optimize your network for cost-to-serve, CO<sub>2</sub>, and service reliability.</p>
-              <ul>
-                <li data-i18n="s5.l1">Facility location &amp; flows</li>
-                <li data-i18n="s5.l2">Mode &amp; carrier selection</li>
-                <li data-i18n="s5.l3">Digital twins for decisions</li>
-              </ul>
-            </article>
-            <article class="card">
-              <span class="card-idx">A6</span>
-              <h3 data-i18n="s6.t">Performance Management</h3>
-              <p data-i18n="s6.d">Self-healing KPIs: agents detect anomalies, explain root causes, and propose fixes you can approve or auto-apply.</p>
-              <ul>
-                <li data-i18n="s6.l1">Service, inventory, cost KPIs</li>
-                <li data-i18n="s6.l2">Alert → insight → action loop</li>
-                <li data-i18n="s6.l3">Human-in-the-loop controls</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Approach -->
-      <section id="approach" class="section">
-        <div class="container">
-          <header class="section-head">
-            <p class="eyebrow"><span>02</span><span data-i18n="app.eyebrow">Approach</span></p>
-            <h2 class="section-title" data-i18n="app.title">How we build agents</h2>
-            <p class="section-subtitle" data-i18n="app.sub">Deterministic where it matters, generative where it helps.</p>
-          </header>
-          <div class="grid three">
-            <div class="pillar">
-              <span class="idx">01</span>
-              <h3 data-i18n="p1.t">Agentic by Design</h3>
-              <p data-i18n="p1.d">Task-oriented agents with clear goals, tools, memory, and guardrails.</p>
-            </div>
-            <div class="pillar">
-              <span class="idx">02</span>
-              <h3 data-i18n="p2.t">Composable</h3>
-              <p data-i18n="p2.d">Micro-agents for forecasting, policy, optimization, and execution — orchestrated via events and APIs.</p>
-            </div>
-            <div class="pillar">
-              <span class="idx">03</span>
-              <h3 data-i18n="p3.t">Enterprise-Grade</h3>
-              <p data-i18n="p3.d">Security, governance, audit trails, and RBAC. Cloud-native and vendor-agnostic (Azure, AWS, Databricks, Snowflake).</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Hypervelocity Engineering -->
-      <section id="hve" class="section band">
-        <div class="container">
-          <header class="section-head">
-            <p class="eyebrow"><span>03</span><span>Hypervelocity Engineering</span></p>
-            <h2 class="section-title" data-i18n="hve.title">Engineered with HVE Core</h2>
-            <p class="section-subtitle" data-i18n="hve.sub">
-              We deliver with <strong>Hypervelocity Engineering (HVE)</strong>, using HVE Core, Microsoft’s open-source agentic SDLC framework for context management, governance, and shift-left engineering.
-              Every pilot runs through the same disciplined loop, so speed never costs you traceability. <strong>AI carries the rules, humans keep the judgment.</strong>
-            </p>
-          </header>
-
-          <ol class="rpi">
-            <li class="step">
-              <span class="tag">rpi-research</span>
-              <h3 data-i18n="r1.t">Research</h3>
-              <p data-i18n="r1.d">Agents gather evidence from your data, systems, and constraints before any decision is made.</p>
-            </li>
-            <li class="step">
-              <span class="tag">rpi-plan</span>
-              <h3 data-i18n="r2.t">Plan</h3>
-              <p data-i18n="r2.d">Findings become an explicit, reviewable plan that your planners approve before work begins.</p>
-            </li>
-            <li class="step">
-              <span class="tag">rpi-implement</span>
-              <h3 data-i18n="r3.t">Implement</h3>
-              <p data-i18n="r3.d">Agents execute the approved plan step by step, guided by coding standards and guardrails.</p>
-            </li>
-            <li class="step">
-              <span class="tag">rpi-review</span>
-              <h3 data-i18n="r4.t">Review</h3>
-              <p data-i18n="r4.d">Results are checked against the plan, with durable evidence and handoff artifacts at every step.</p>
-            </li>
-          </ol>
-
-          <div class="hve-meta">
-            <div>
-              <h4 data-i18n="hve.lifecycle">Across the full lifecycle</h4>
-              <ol class="chips">
-                <li data-i18n="st1">Setup</li>
-                <li data-i18n="st2">Discovery</li>
-                <li data-i18n="st3">Product Definition</li>
-                <li data-i18n="st4">Decomposition</li>
-                <li data-i18n="st5">Sprint Planning</li>
-                <li data-i18n="st6">Implementation</li>
-                <li data-i18n="st7">Review</li>
-                <li data-i18n="st8">Delivery</li>
-                <li data-i18n="st9">Operations</li>
-              </ol>
-            </div>
-            <div>
-              <h4 data-i18n="hve.provides">What HVE Core provides</h4>
-              <ul class="ships">
-                <li><b data-i18n="sh1.t">Agents</b><span data-i18n="sh1.d">Specialized for research, planning, implementation, and review</span></li>
-                <li><b data-i18n="sh2.t">Instructions</b><span data-i18n="sh2.d">Coding standards applied automatically</span></li>
-                <li><b data-i18n="sh3.t">Skills</b><span data-i18n="sh3.d">Reusable workflows and tool capabilities</span></li>
-                <li><b data-i18n="sh4.t">Role guides</b><span data-i18n="sh4.d">For engineers, TPMs, architects, data scientists, SREs, and more</span></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="hve-links">
-            <a class="btn btn-primary" href="https://microsoft.github.io/hve-core/docs/hve-guide/" target="_blank" rel="noopener" data-i18n="hve.cta1">Read the HVE Guide</a>
-            <a class="btn btn-ghost" href="https://github.com/microsoft/hve-core" target="_blank" rel="noopener" data-i18n="hve.cta2">microsoft/hve-core on GitHub</a>
-          </div>
-          <p class="note" data-i18n="hve.note">HVE Core is an open-source project by Microsoft, released under the MIT License.</p>
-        </div>
-      </section>
-
-      <!-- Tech Stack -->
-      <section id="stack" class="section">
-        <div class="container">
-          <header class="section-head">
-            <p class="eyebrow"><span>04</span><span data-i18n="tech.eyebrow">Technology</span></p>
-            <h2 class="section-title" data-i18n="tech.title">Technology stack</h2>
-            <p class="section-subtitle" data-i18n="tech.sub">From lakehouse to human-in-the-loop experiences.</p>
-          </header>
-          <div class="grid tech">
-            <div class="tech-card">
-              <h4 data-i18n="t1.h">Data</h4>
-              <p data-i18n="t1.p">Delta Lake • Lakehouse • Streaming ETL • Semantic models</p>
-            </div>
-            <div class="tech-card">
-              <h4 data-i18n="t2.h">Intelligence</h4>
-              <p data-i18n="t2.p">Time-series ML • Bayesian demand • RL policies • OR solvers</p>
-            </div>
-            <div class="tech-card">
-              <h4 data-i18n="t3.h">Agents</h4>
-              <p data-i18n="t3.p">Planning &amp; execution tools • RAG over supply data • Memory &amp; skills</p>
-            </div>
-            <div class="tech-card">
-              <h4 data-i18n="t4.h">Experience</h4>
-              <p data-i18n="t4.p">Copilot UX • Chat + apps • Dashboards • Human-in-the-loop</p>
-            </div>
-            <div class="tech-card">
-              <h4 data-i18n="t5.h">Ops</h4>
-              <p data-i18n="t5.p">MLOps • Prompt/AgentOps • HVE Core • CI/CD • Observability &amp; safety</p>
-            </div>
-            <div class="tech-card">
-              <h4 data-i18n="t6.h">Integrations</h4>
-              <p data-i18n="t6.p">ERP/WMS/TMS • EDI/API • Market &amp; risk feeds • IoT/telemetry</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- About -->
-      <section id="about" class="section alt">
-        <div class="container about">
-          <div class="about-copy">
-            <p class="eyebrow"><span>05</span><span data-i18n="about.eyebrow">About</span></p>
-            <h2 class="section-title" data-i18n="about.title">About AGENSTRUM Labs</h2>
-            <p data-i18n="about.body">AGENSTRUM Labs is a focused team of supply-chain engineers, data scientists, and designers. We’ve blended operations research and modern Agentic AI to deliver tangible outcomes — less inventory, higher service, faster decisions.</p>
-            <ul class="ticks">
-              <li data-i18n="tick1">Rapid pilots</li>
-              <li data-i18n="tick2">Security &amp; governance first</li>
-              <li data-i18n="tick3">Co-create with your planners</li>
-            </ul>
-          </div>
-          <div class="about-art">
-            <div class="badge"><span data-i18n="about.badge">Proof of Concept</span></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact -->
-      <section id="contact" class="section">
-        <div class="container contact">
-          <div class="contact-intro">
-            <p class="eyebrow"><span>06</span><span data-i18n="contact.eyebrow">Contact</span></p>
-            <h2 class="section-title" data-i18n="contact.title">Let’s talk</h2>
-            <p class="section-subtitle" data-i18n="contact.sub">Tell us about your supply‑chain challenges. We’ll get back within one business day.</p>
-            <p class="form-status" id="form-status" hidden data-i18n="contact.sent">Thanks, your message was sent. We’ll be in touch shortly.</p>
-          </div>
-          <form class="form" id="contact-form" action="https://formsubmit.co/amz@agenstrum.com" method="POST">
-            <input type="hidden" name="_subject"  value="AGENSTRUM Labs — New website inquiry" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha"  value="false" />
-            <input type="hidden" name="_next"     value="https://www.agenstrum.com/?sent#contact" />
-            <input type="hidden" name="language" id="form-lang" value="en" />
-            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-            <div class="grid two">
-              <div class="field">
-                <label for="name" data-i18n="f.name">Name</label>
-                <input id="name" name="name" data-i18n-ph="f.name.ph" placeholder="Your name" autocomplete="name" required />
-              </div>
-              <div class="field">
-                <label for="email" data-i18n="f.email">Email</label>
-                <input id="email" name="email" type="email" data-i18n-ph="f.email.ph" placeholder="you@company.com" autocomplete="email" required />
-              </div>
-            </div>
-            <div class="grid two">
-              <div class="field">
-                <label for="company" data-i18n="f.company">Company</label>
-                <input id="company" name="company" data-i18n-ph="f.company.ph" placeholder="Organization" autocomplete="organization" />
-              </div>
-              <div class="field">
-                <label for="role" data-i18n="f.role">Role</label>
-                <input id="role" name="role" data-i18n-ph="f.role.ph" placeholder="Title" autocomplete="organization-title" />
-              </div>
-            </div>
-            <div class="field">
-              <label for="message" data-i18n="f.msg">What would you like to achieve?</label>
-              <textarea id="message" name="message" rows="5" data-i18n-ph="f.msg.ph" placeholder="e.g., Reduce inventory 20% while holding 99% service…"></textarea>
-            </div>
-            <button class="btn btn-primary" type="submit" data-i18n="f.send">Send message</button>
-          </form>
         </div>
       </section>
     </main>
@@ -394,11 +173,14 @@
           </div>
         </div>
         <div class="foot-links">
-          <a href="#solutions" data-i18n="nav.solutions">Solutions</a>
-          <a href="#approach" data-i18n="nav.approach">Approach</a>
-          <a href="#hve" data-i18n="nav.hve">HVE</a>
-          <a href="#stack" data-i18n="nav.tech">Tech</a>
-          <a href="#contact" data-i18n="nav.contact">Contact</a>
+          <a href="./" data-i18n="nav.home">Home</a>
+          <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+          <a href="approach.html" data-i18n="nav.approach">Approach</a>
+          <a href="hve.html" data-i18n="nav.hve">HVE</a>
+          <a href="tech.html" data-i18n="nav.tech">Tech</a>
+          <a href="resources.html" data-i18n="nav.resources">Resources</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="contact.html" data-i18n="nav.contact">Contact</a>
         </div>
         <div class="foot-copy">
           © <span id="year"></span> AGENSTRUM. <span data-i18n="foot.rights">All rights reserved.</span>
@@ -408,7 +190,7 @@
     </footer>
 
     <script src="js/i18n.js"></script>
-    <script src="js/agents.js"></script>
+    <script src="js/twin.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

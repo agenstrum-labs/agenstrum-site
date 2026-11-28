@@ -93,3 +93,50 @@ document.querySelectorAll('.card, .pillar, .tech-card, .rpi .step, .about .badge
   el.classList.add('will-reveal');
   observer.observe(el);
 });
+
+// Service cards: open the whole card full screen (overlay fallback where the
+// Fullscreen API isn't available, e.g. iPhone Safari)
+const fsElement = () => document.fullscreenElement || document.webkitFullscreenElement;
+const setExpandState = (card, on) => {
+  const btn = card.querySelector('.card-expand');
+  if (!btn) return;
+  btn.setAttribute('aria-pressed', String(on));
+  const lang = (window.AgenstrumI18n && AgenstrumI18n.current) || 'en';
+  const L = {
+    en: ['Open full screen', 'Exit full screen'], es: ['Abrir en pantalla completa', 'Salir de pantalla completa'],
+    pt: ['Abrir em tela cheia', 'Sair da tela cheia'], it: ['Apri a schermo intero', 'Esci dallo schermo intero']
+  }[lang] || ['Open full screen', 'Exit full screen'];
+  btn.setAttribute('aria-label', on ? L[1] : L[0]);
+};
+document.querySelectorAll('.card.service').forEach(card => {
+  const btn = card.querySelector('.card-expand');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const native = card.requestFullscreen || card.webkitRequestFullscreen;
+    if (fsElement() === card) {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    } else if (card.classList.contains('is-expanded')) {
+      card.classList.remove('is-expanded');
+      document.body.classList.remove('has-expanded');
+      setExpandState(card, false);
+    } else if (native && document.fullscreenEnabled !== false) {
+      Promise.resolve(native.call(card)).catch(() => {
+        card.classList.add('is-expanded'); document.body.classList.add('has-expanded'); setExpandState(card, true);
+      });
+    } else {
+      card.classList.add('is-expanded');
+      document.body.classList.add('has-expanded');
+      setExpandState(card, true);
+    }
+  });
+});
+['fullscreenchange', 'webkitfullscreenchange'].forEach(ev => document.addEventListener(ev, () => {
+  document.querySelectorAll('.card.service').forEach(c => setExpandState(c, fsElement() === c));
+}));
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  document.querySelectorAll('.card.service.is-expanded').forEach(c => {
+    c.classList.remove('is-expanded'); setExpandState(c, false);
+  });
+  document.body.classList.remove('has-expanded');
+});
